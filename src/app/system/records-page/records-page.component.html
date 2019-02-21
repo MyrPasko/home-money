@@ -1,0 +1,27 @@
+<div class="title-block">
+  <h3 class="title">
+    Страница записей <span class="sparkline bar"></span>
+  </h3>
+</div>
+
+<section class="section text-center" *ngIf="!isLoaded">Loading...</section>
+
+<section class="section" *ngIf="isLoaded">
+  <div class="row">
+    <div class="col-md-6">
+      <pmr-add-event [categories]="categories"></pmr-add-event>
+    </div>
+    <div class="col-md-6">
+      <pmr-add-category (categoryAdd)="newCategoryAdded($event)"></pmr-add-category>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <pmr-edit-category
+        [categories]="categories"
+        (onCategoryEdit)="categoryWasEdited($event)"
+      ></pmr-edit-category>
+    </div>
+  </div>
+</section>
